@@ -1,16 +1,12 @@
 import React from 'react';
-import bananaImage from './img/banana.png';
-import abacaxiImage from './img/abacaxi.png';
-import macaImage from './img/maca.png';
-import melanciaImage from './img/melancia.png';
-import goiabaImage from './img/goiaba.png';
+
 
 const productsData = [
-  { id: 1, name: 'Banana Prata', price: 4.5, stock: 345.2, image: bananaImage },
-  { id: 2, name: 'Abacaxi', price: 4.5, stock: 100.0, image: abacaxiImage },
-  { id: 3, name: 'Maçã', price: 4.5, stock: 50.0, image: macaImage },
-  { id: 4, name: 'Melancia', price: 4.5, stock: 75.0, image: melanciaImage },
-  { id: 5, name: 'Goiaba', price: 4.5, stock: 75.0, image: goiabaImage },
+//   { id: 1, name: 'Banana Prata', price: 4.5, stock: 345.2, image: bananaImage },
+//   { id: 2, name: 'Abacaxi', price: 4.5, stock: 100.0, image: abacaxiImage },
+//   { id: 3, name: 'Maçã', price: 4.5, stock: 50.0, image: macaImage },
+//   { id: 4, name: 'Melancia', price: 4.5, stock: 75.0, image: melanciaImage },
+//   { id: 5, name: 'Goiaba', price: 4.5, stock: 75.0, image: goiabaImage },
 ];
 
 const Produto = ({ cartItems, setCartItems }) => {

@@ -13,7 +13,9 @@ const Header = ({ cartItems, incrementItem, decrementItem }) => {
   return (
     <header style={styles.header}>
       <div style={styles.logoContainer}>
-        <img style={styles.logoimg} src={Logo} alt="Logo" />
+        <Link to="/">
+          <img style={styles.logoimg} src={Logo} alt="Logo" />
+        </Link>
       </div>
       <nav>
         <ul style={styles.navList}>
@@ -31,7 +33,7 @@ const Header = ({ cartItems, incrementItem, decrementItem }) => {
               <div
                 style={styles.cartDropdown}
                 onMouseEnter={() => setIsCartVisible(true)} 
-                onMouseLeave={() => setIsCartVisible(false)} 
+                onMouseLeave={() => setIsCartVisible(false)}
               >
                 <h4>Carrinho</h4>
                 <ul style={styles.cartList}>
@@ -72,6 +74,8 @@ const styles = {
     color: '#fff',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
     height: '80px',
+    position: 'relative', 
+    zIndex: 10, 
   },
   logoContainer: {
     display: 'flex',
@@ -80,15 +84,20 @@ const styles = {
   logoimg: {
     width: '85px',
     height: '85px',
+    cursor: 'pointer',
   },
   navList: {
     display: 'flex',
     listStyle: 'none',
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: '50px',
+    padding: 0,
   },
   navItem: {
     fontSize: '18px',
     fontWeight: 'bold',
+    transition: 'transform 0.3s ease, background-color 0.3s ease',
   },
   navLink: {
     color: '#fff',
@@ -97,14 +106,17 @@ const styles = {
   cartItem: {
     position: 'relative',
     cursor: 'pointer',
+    padding: '0 10px', 
   },
   cartIcon: {
     width: '40px',
     height: '40px',
+    display: 'block',
+    margin: '0 auto', 
   },
   cartDropdown: {
     position: 'absolute',
-    top: '50px',
+    top: '40px', 
     right: 0,
     backgroundColor: '#fff',
     color: '#333',
@@ -112,6 +124,7 @@ const styles = {
     border: '1px solid #ddd',
     boxShadow: '0px 4px 8px rgba(0,0,0,0.1)',
     width: '200px',
+    zIndex: 20, 
   },
   cartList: {
     listStyle: 'none',
@@ -133,7 +146,29 @@ const styles = {
     border: 'none',
     padding: '5px',
     cursor: 'pointer',
-  }
+  },
 };
+
+const navHoverEffect = {
+  transform: 'scale(1.1)', 
+  backgroundColor: '#ccc',
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const navItems = document.querySelectorAll('[style*="navItem"]');
+  
+  navItems.forEach((item) => {
+    item.addEventListener('mouseenter', () => {
+      Object.assign(item.style, navHoverEffect);
+    });
+
+    item.addEventListener('mouseleave', () => {
+      Object.assign(item.style, {
+        transform: 'scale(1)',
+        backgroundColor: 'transparent',
+      });
+    });
+  });
+});
 
 export default Header;
